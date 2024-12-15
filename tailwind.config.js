@@ -6,7 +6,7 @@ export default {
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
       },
-      color: {
+      colors: {
         primary: "#313136",
         secondary: "",
       },
