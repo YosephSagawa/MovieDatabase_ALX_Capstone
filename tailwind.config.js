@@ -5,10 +5,14 @@ export default {
     extend: {
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],
+        raleway: ["Raleway", "sans-serif"],
+        nunito: ["Nunito", "sans-serif"],
       },
       colors: {
-        primary: "#313136",
+        primary: "#1A1A1D",
         secondary: "",
+        footer: "#212126",
+        textreel: "#EDEDED",
       },
     },
   },
