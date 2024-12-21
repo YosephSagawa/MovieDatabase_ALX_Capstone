@@ -5,7 +5,6 @@ const fetchPopularMovies = async () => {
 
   try {
     const response = await axios.get(URL);
-    console.log("Fetched movies response:", response);
     return response;
   } catch (error) {
     console.error("Error fetching data:", error);

@@ -17,3 +17,4 @@
   -Added styles and content to the Movie Detail page
   -Added styles to the movie card,home page and navbar
   -Changed the Search component into PopularMovies component
+  -Added the crew and cast sections in the movie details
