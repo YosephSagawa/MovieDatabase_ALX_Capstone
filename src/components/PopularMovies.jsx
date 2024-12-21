@@ -4,7 +4,7 @@ import fetchPopularMovies from "../services/TmdbService";
 //Components
 import MovieCard from "./MovieCard";
 
-const Search = () => {
+const PopularMovies = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -36,4 +36,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default PopularMovies;

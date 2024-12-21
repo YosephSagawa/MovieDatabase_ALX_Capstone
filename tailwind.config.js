@@ -13,6 +13,7 @@ export default {
         secondary: "#2A2E37",
         footer: "#212126",
         textreel: "#EDEDED",
+        movietitle: "#00FFFF",
       },
     },
   },

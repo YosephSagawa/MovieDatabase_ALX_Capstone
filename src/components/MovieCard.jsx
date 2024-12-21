@@ -39,10 +39,10 @@ const MovieCard = ({ id, title, poster_path, vote_average }) => {
         </div>
         <div className="flex flex-row items-center justify-between p-4">
           <div className="flex flex-col">
-            <p className="font-montserrat text-white w-[200px] text-wrap">
+            <p className="font-montserrat text-movietitle w-[200px] text-wrap font-medium mb-1">
               {title}
             </p>
-            <p className="font-nunito text-gray-300 text-xs text-wrap w-[200px]">
+            <p className="font-nunito text-gray-200 text-xs text-wrap w-[200px]">
               {genres.map((genre) => genre.name).join(",")}
             </p>
           </div>
