@@ -12,3 +12,6 @@
   -Installed react icons
   -Added some styles to the home page
   -Added Nunito and Raleway font
+  -Added the MovieCard component and styled it
+  -Added the MovieDetail page
+  -

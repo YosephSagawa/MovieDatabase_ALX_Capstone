@@ -1,11 +1,7 @@
 import React from "react";
 import Logo from "../assets/Logo.png";
 import { NavLink } from "react-router-dom";
-import {
-  AiFillGithub,
-  AiFillTwitterCircle,
-  AiFillLinkedin,
-} from "react-icons/ai";
+import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { TbBrandX } from "react-icons/tb";
 
 const Footer = () => {

@@ -10,7 +10,7 @@ export default {
       },
       colors: {
         primary: "#1A1A1D",
-        secondary: "",
+        secondary: "#2A2E37",
         footer: "#212126",
         textreel: "#EDEDED",
       },

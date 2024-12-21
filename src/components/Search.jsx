@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import fetchPopularMovies from "../services/TmdbService";
 
+//Components
+import MovieCard from "./MovieCard";
+
 const Search = () => {
   const [movies, setMovies] = useState([]);
 
@@ -21,16 +24,12 @@ const Search = () => {
       <h1>Popular Movies</h1>
       <div className="flex flex-wrap gap-5">
         {movies.map((movie) => (
-          <div key={movie.id} className="text-center w-fit mx-auto">
-            <img
-              src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-              alt={movie.title}
-              className="w-[200px] h-[300px] shadow-md rounded-md"
-            />
-            <p className="font-nunito text-white w-[200px] text-wrap">
-              {movie.title}
-            </p>
-          </div>
+          <MovieCard
+            id={movie.id}
+            title={movie.title}
+            poster_path={movie.poster_path}
+            vote_average={movie.vote_average}
+          />
         ))}
       </div>
     </div>
