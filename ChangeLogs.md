@@ -18,3 +18,6 @@
   -Added styles to the movie card,home page and navbar
   -Changed the Search component into PopularMovies component
   -Added the crew and cast sections in the movie details
+  -Added the search form and search results component
+  -Styled the search results
+  -Adjusted some styled of the movie card and popular movies component

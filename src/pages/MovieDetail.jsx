@@ -80,17 +80,19 @@ const MovieDetail = () => {
             ))}
           </div>
 
-          <div className="flex flex-row gap-4">
-            {productionCompanies.map((company) => (
-              <div className="flex flex-col w-fit">
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
-                  alt=""
-                  className="w-[100px] h-auto"
-                />
-                <p key={company.id}>{company.name}</p>
-              </div>
-            ))}
+          <div className="flex flex-row gap-4 flex-wrap">
+            {productionCompanies
+              .filter((member) => member.logo_path !== null)
+              .map((company) => (
+                <div className="flex flex-col w-fit">
+                  <img
+                    src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
+                    alt=""
+                    className="w-[100px] h-auto"
+                  />
+                  <p key={company.id}>{company.name}</p>
+                </div>
+              ))}
           </div>
         </div>
       </div>

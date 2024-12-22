@@ -22,10 +22,9 @@ const MovieCard = ({ id, title, poster_path, vote_average }) => {
       <div
         key={id}
         className="text-start
-     w-fit mx-auto bg-secondary rounded-xl items-center gap-2 overflow-hidden"
+     w-fit mx-auto bg-secondary rounded-xl items-center gap-4 overflow-hidden justify-center"
       >
-        {" "}
-        <div className="relative w-[300px] h-[450px] overflow-hidden group">
+        <div className="relative w-[225px] h-[337.5px] overflow-hidden group">
           <img
             src={`https://image.tmdb.org/t/p/original${poster_path}`}
             alt={title}
@@ -37,12 +36,12 @@ const MovieCard = ({ id, title, poster_path, vote_average }) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-row items-center justify-between p-4">
+        <div className="flex flex-row items-center justify-between p-2">
           <div className="flex flex-col">
-            <p className="font-montserrat text-movietitle w-[200px] text-wrap font-medium mb-1">
+            <p className="font-montserrat text-sm text-movietitle w-[150px] text-wrap font-medium mb-1">
               {title}
             </p>
-            <p className="font-nunito text-gray-200 text-xs text-wrap w-[200px]">
+            <p className="font-nunito text-gray-200 text-xs text-wrap truncate w-[150px]">
               {genres.map((genre) => genre.name).join(",")}
             </p>
           </div>
