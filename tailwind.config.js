@@ -14,6 +14,7 @@ export default {
         footer: "#212126",
         textreel: "#EDEDED",
         movietitle: "#00FFFF",
+        searchbg: "#D9D9D9",
       },
     },
   },

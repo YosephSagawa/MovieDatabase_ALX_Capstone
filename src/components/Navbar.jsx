@@ -6,7 +6,7 @@ import { IoIosSearch } from "react-icons/io";
 
 const Navbar = () => {
   return (
-    <div className="absolute top-0 left-0 right-0 bg-opacity-50">
+    <div className="absolute z-50 top-0 left-0 right-0 bg-opacity-50">
       <nav>
         <ul className="flex items-center p-6">
           <l1>

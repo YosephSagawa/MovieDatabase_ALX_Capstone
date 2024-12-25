@@ -21,3 +21,7 @@
   -Added the search form and search results component
   -Styled the search results
   -Adjusted some styled of the movie card and popular movies component
+  -Added styles to the search form and the home page
+  -Changed the home background into a video
+  -Added a store to control movie state from search form and movie results
+  -Fixed an issue with the navbar on the home page
