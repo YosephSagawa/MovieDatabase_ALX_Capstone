@@ -13,7 +13,6 @@ const Discover = async (genre, minRating, maxRating) => {
         sort_by: "popularity.desc",
       },
     });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     throw error;

@@ -25,3 +25,6 @@
   -Changed the home background into a video
   -Added a store to control movie state from search form and movie results
   -Fixed an issue with the navbar on the home page
+  -Added the categories page with an option to select genres
+  -Styled the category page
+  -Styled the scroll bar

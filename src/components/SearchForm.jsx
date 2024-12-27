@@ -60,10 +60,10 @@ const MovieSearchForm = () => {
         onSubmit={handleSubmit}
         className="flex flex-col items-center justify-center gap-4 p-6"
       >
-        <h1 className="font-montserrat font-semibold text-8xl text-white text-center">
+        <h1 className="font-montserrat font-semibold text-6xl text-white text-center w-3/5">
           What are you in the mood to watch?
         </h1>
-        <h3 className="font-nunito font-semibold text-3xl text-white text-center">
+        <h3 className="font-nunito font-semibold text-lg text-white text-center">
           Ready to watch? Search by name or select a genre
         </h3>
         <div className="bg-searchbg/25 rounded-full w-fit pr-72 py-3 flex flex-row">

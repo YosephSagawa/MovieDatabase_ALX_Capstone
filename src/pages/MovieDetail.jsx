@@ -47,7 +47,7 @@ const MovieDetail = () => {
       linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 60%, rgba(26, 26, 29, 1) 100%), 
       url('https://image.tmdb.org/t/p/original${details.backdrop_path}')
     `,
-          backgroundColor: "#1A1A1D", // Matches the background color
+          backgroundColor: "#1A1A1D",
         }}
       ></div>
       <div className="-mt-[150px] flex items-center gap-4 pr-8 pl-24 relative">
@@ -58,7 +58,6 @@ const MovieDetail = () => {
         />
         <div>
           <p>{details.release_date}</p>
-          <p></p>
           <h1 className="text-5xl font-montserrat font-bold mt-2 mb-2">
             {details.title}
           </h1>
