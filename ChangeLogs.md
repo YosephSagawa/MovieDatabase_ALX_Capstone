@@ -28,3 +28,4 @@
   -Added the categories page with an option to select genres
   -Styled the category page
   -Styled the scroll bar
+  -Fixed styles with navbar interactivity, added styles for no result conditions to the categories page and home page

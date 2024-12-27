@@ -130,7 +130,10 @@ const MovieSearchForm = () => {
             </div>
           </div>
         </div>
-        <button type="submit" className="text-white w-fit">
+        <button
+          type="submit"
+          className="text-white w-fit bg-button/40 px-4 py-1 rounded-full hover:bg-button transition-colors duration-300"
+        >
           Search
         </button>
       </form>

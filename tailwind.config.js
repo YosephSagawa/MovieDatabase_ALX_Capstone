@@ -15,6 +15,7 @@ export default {
         textreel: "#EDEDED",
         movietitle: "#00FFFF",
         searchbg: "#D9D9D9",
+        button: "#E63946",
       },
     },
   },

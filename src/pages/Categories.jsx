@@ -6,6 +6,7 @@ import Discover from "../services/MovieDiscoverService";
 
 //Images
 import CategoriesBackground from "../assets/CategoriesBackground.jpg";
+import TrySearching from "../assets/TrySearching.svg";
 
 const Categories = () => {
   const [genres, setGenres] = useState([]);
@@ -49,7 +50,7 @@ const Categories = () => {
         </h1>
       </div>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex justify-center py-6">
         <div className="bg-searchbg/25 rounded-full w-fit py-3 px-2">
           <select
             name="genres"
@@ -71,28 +72,44 @@ const Categories = () => {
               </option>
             ))}
           </select>
-          <button type="submit">Submit</button>
+          <button type="submit" className="text-white">
+            Submit
+          </button>
         </div>
       </form>
-      <div className="px-8">
-        <h1 className="text-xl text-gray-300 border-b font-montserrat font-medium mb-12">
-          {selectedGenre && movies !== null
-            ? `Movies in ${
-                genres.find((g) => g.id === Number(selectedGenre))?.name || ""
-              }`
-            : "Results will show here"}
-        </h1>
-        <div className="flex flex-wrap gap-4 justify-center mb-6">
-          {movies.map((movie) => (
-            <MovieCard
-              id={movie.id}
-              title={movie.title}
-              poster_path={movie.poster_path}
-              vote_average={movie.vote_average}
-            />
-          ))}
+
+      {!movies || movies.length === 0 ? (
+        <div className="px-8 pb-8">
+          <img
+            src={TrySearching}
+            alt="Try Searching"
+            className="w-64 mx-auto"
+          />
+          <p className="text-white/25 text-center text-xl">
+            Try searching for a movie to see results
+          </p>
         </div>
-      </div>
+      ) : (
+        <div className="px-8">
+          <h1 className="text-xl text-gray-300 border-b font-montserrat font-medium mb-12">
+            {selectedGenre && (movies || movies.length !== 0)
+              ? `Movies in ${
+                  genres.find((g) => g.id === Number(selectedGenre))?.name || ""
+                }`
+              : "Results will show here"}
+          </h1>
+          <div className="flex flex-wrap gap-4 justify-center mb-6">
+            {movies.map((movie) => (
+              <MovieCard
+                id={movie.id}
+                title={movie.title}
+                poster_path={movie.poster_path}
+                vote_average={movie.vote_average}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
