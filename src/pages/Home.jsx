@@ -18,7 +18,7 @@ const Home = () => {
         autoPlay
         loop
         muted
-        className="absolute top-0 left-0 w-full h-auto object-cover z-0"
+        className="absolute top-0 left-0 w-full min-h-screen object-cover z-0"
       >
         <source src={BackgroundVideo} type="video/mp4" />
       </video>
@@ -26,7 +26,7 @@ const Home = () => {
       <div className="z-10 relative top-24 flex flex-col items-center justify-center h-screen">
         <MovieSearchForm />
       </div>
-      <div className="relative z-10 py-10 mt-32">
+      <div className="relative z-10 py-10 sm:mt-32">
         <div>
           <div className="px-8">
             <h1 className="text-xl text-gray-300 border-b font-montserrat font-medium mb-12">

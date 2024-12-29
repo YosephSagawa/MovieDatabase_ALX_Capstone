@@ -21,7 +21,7 @@ const MovieResults = () => {
   }
   return (
     <div className="px-8">
-      <div className="flex flex-wrap gap-4 justify-center mb-6">
+      <div className="flex flex-wrap gap-x-20 gap-y-4 lg:gap-4 justify-center mb-6">
         {movies.map((movie) => (
           <MovieCard
             key={movie.id}

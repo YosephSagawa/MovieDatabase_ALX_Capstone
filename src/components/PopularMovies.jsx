@@ -24,7 +24,7 @@ const PopularMovies = () => {
       <h1 className="text-xl text-gray-300 border-b font-montserrat font-medium mb-12">
         Popular Movies
       </h1>
-      <div className="flex flex-wrap gap-4 justify-center mb-6">
+      <div className="flex flex-wrap gap-x-20 gap-y-4 lg:gap-4 justify-center mb-6">
         {movies.map((movie) => (
           <MovieCard
             id={movie.id}

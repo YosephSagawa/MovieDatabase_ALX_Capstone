@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import fetchMovieDetails from "../services/MovieDetailService";
 import fetchMovieCast from "../services/MovieCastService";
+import fetchMovieVideos from "../services/MovieVideoService";
 
 const MovieDetail = () => {
   const [details, setDetails] = useState([]);
@@ -9,6 +10,7 @@ const MovieDetail = () => {
   const [productionCompanies, setProductionCompanies] = useState([]);
   const [cast, setCast] = useState([]);
   const [crew, setCrew] = useState([]);
+  const [trailerKey, setTrailerKey] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -34,8 +36,21 @@ const MovieDetail = () => {
         console.error("Failed to fetch movie cast:", error);
       }
     };
+
+    const fetchVideos = async () => {
+      try {
+        const videos = await fetchMovieVideos(id);
+        const trailer = videos.results.find(
+          (video) => video.type === "Trailer" && video.site === "YouTube"
+        );
+        if (trailer) setTrailerKey(trailer.key);
+      } catch (error) {
+        console.error("Failed to fetch movie trailer:", error);
+      }
+    };
     fetchDetails();
     fetchCast();
+    fetchVideos();
   }, [id]);
 
   return (
@@ -94,6 +109,24 @@ const MovieDetail = () => {
               ))}
           </div>
         </div>
+      </div>
+      <div className="p-8">
+        <h3 className="text-xl text-gray-300 border-b font-montserrat font-medium mb-4">
+          Trailer
+        </h3>
+        {trailerKey ? (
+          <iframe
+            width="100%"
+            height="500px"
+            src={`https://www.youtube.com/embed/${trailerKey}`}
+            title="Movie Trailer"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        ) : (
+          <p>No trailer available for this movie.</p>
+        )}
       </div>
       <div className="p-8">
         <h3 className="text-xl text-gray-300 border-b font-montserrat font-medium">

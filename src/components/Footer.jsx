@@ -7,7 +7,7 @@ import { TbBrandX } from "react-icons/tb";
 const Footer = () => {
   return (
     <div className="flex flex-col  bg-footer text-white pb-4">
-      <div className="flex flex-row items-center justify-between px-16 py-8">
+      <div className="flex flex-col sm:flex-row items-center justify-between px-16 py-8">
         <div>
           <NavLink to="/" className="flex flex-row ">
             <img src={Logo} alt="The Real Deal Logo" className="" />
@@ -19,7 +19,7 @@ const Footer = () => {
             Discover and dive into your favorite movies, anytime, anywhere!
           </p>
         </div>
-        <div>
+        <div className="pt-8 sm:pt-0">
           <div className="flex font-nunito gap-3">
             <NavLink to="/" className="hover:underline">
               Home

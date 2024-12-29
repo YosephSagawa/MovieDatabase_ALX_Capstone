@@ -29,3 +29,4 @@
   -Styled the category page
   -Styled the scroll bar
   -Fixed styles with navbar interactivity, added styles for no result conditions to the categories page and home page
+  -Added the trailer section in the movie details page

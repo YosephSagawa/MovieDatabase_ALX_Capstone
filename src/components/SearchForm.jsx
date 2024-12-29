@@ -60,13 +60,13 @@ const MovieSearchForm = () => {
         onSubmit={handleSubmit}
         className="flex flex-col items-center justify-center gap-4 p-6"
       >
-        <h1 className="font-montserrat font-semibold text-6xl text-white text-center w-3/5">
+        <h1 className="font-montserrat font-semibold text-4xl sm:text-6xl text-white text-center sm:w-3/5">
           What are you in the mood to watch?
         </h1>
-        <h3 className="font-nunito font-semibold text-lg text-white text-center">
+        <h3 className="font-nunito w-3/5 sm:w-full sm:font-semibold sm:text-lg text-sm font-light  text-white text-center">
           Ready to watch? Search by name or select a genre
         </h3>
-        <div className="bg-searchbg/25 rounded-full w-fit pr-72 py-3 flex flex-row">
+        <div className="bg-searchbg/25 rounded-full w-fit pr-24 sm:pr-72 py-3 flex flex-row">
           <IoIosSearch className="text-white font-medium text-3xl mx-2" />
           <input
             type="text"
