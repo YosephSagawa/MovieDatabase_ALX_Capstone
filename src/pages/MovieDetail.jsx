@@ -4,6 +4,10 @@ import fetchMovieDetails from "../services/MovieDetailService";
 import fetchMovieCast from "../services/MovieCastService";
 import fetchMovieVideos from "../services/MovieVideoService";
 
+//Icons
+import { FaRegClock } from "react-icons/fa6";
+import { FaStar } from "react-icons/fa";
+
 const MovieDetail = () => {
   const [details, setDetails] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -12,6 +16,12 @@ const MovieDetail = () => {
   const [crew, setCrew] = useState([]);
   const [trailerKey, setTrailerKey] = useState(null);
   const { id } = useParams();
+
+  const formatRuntime = (runtime) => {
+    const hours = Math.floor(runtime / 60);
+    const minutes = runtime % 60;
+    return `${hours}h ${minutes}m`;
+  };
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -65,14 +75,27 @@ const MovieDetail = () => {
           backgroundColor: "#1A1A1D",
         }}
       ></div>
-      <div className="-mt-[150px] flex items-center gap-4 pr-8 pl-24 relative">
+      <div className="-mt-[150px] flex sm:flex-row flex-col items-center gap-4 pr-8 sm:pl-24 pl-8 relative">
         <img
           src={`https://image.tmdb.org/t/p/original${details.poster_path}`}
           alt="Poster Image"
           className="w-[300px] h-[450px] shadow-lg"
         />
         <div>
-          <p>{details.release_date}</p>
+          <div className="flex flex-row gap-4">
+            <p className="font-light">{details.release_date}</p>
+            <p className="font-light flex items-center gap-1">
+              <FaRegClock />
+              {formatRuntime(details.runtime)}
+            </p>
+            <p className="flex flex-row items-center gap-1 font-bold text-movietitle">
+              <span className="text-yellow-300">
+                <FaStar />
+              </span>
+              {details.vote_average}
+            </p>
+          </div>
+
           <h1 className="text-5xl font-montserrat font-bold mt-2 mb-2">
             {details.title}
           </h1>
@@ -82,7 +105,7 @@ const MovieDetail = () => {
           <p className="text-base font-light font-nunito mb-6">
             {details.overview}
           </p>
-          <div className="flex flex-row gap-6 items-center mb-8">
+          <div className="flex flex-row flex-wrap gap-6 items-center mb-8">
             Genres
             {genres.map((genre) => (
               <p
@@ -132,7 +155,7 @@ const MovieDetail = () => {
         <h3 className="text-xl text-gray-300 border-b font-montserrat font-medium">
           Cast
         </h3>
-        <div className="grid grid-cols-4 gap-4 gap-y-12 mt-6 justify-center px-12 ">
+        <div className="flex flex-row flex-wrap sm:grid sm:grid-cols-4 sm:gap-4 sm:gap-y-12 mt-6 justify-start sm:justify-center px-12 ">
           {cast
             .filter(
               (member) => member.name && member.profile_path && member.character
@@ -140,7 +163,7 @@ const MovieDetail = () => {
             .map((actor) => (
               <div>
                 {actor.profile_path && (
-                  <div className="flex flex-row">
+                  <div className="flex flex-row mt-8 sm:mt-0">
                     <img
                       src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
                       alt=""
@@ -164,7 +187,7 @@ const MovieDetail = () => {
         <h3 className="text-xl text-gray-300 border-b font-montserrat font-medium">
           Crew
         </h3>
-        <div className="grid grid-cols-4 gap-4 gap-y-12 mt-6 justify-center px-12">
+        <div className="flex flex-row flex-wrap sm:grid sm:grid-cols-4 sm:gap-4 sm:gap-y-12 mt-6  justify-start sm:justify-center px-12">
           {crew
             .filter(
               (member) => member.name && member.profile_path && member.job
@@ -172,7 +195,7 @@ const MovieDetail = () => {
             .map((crew) => (
               <div>
                 {crew.profile_path && (
-                  <div className="flex flex-row">
+                  <div className="flex flex-row mt-8 sm:mt-0">
                     <img
                       src={`https://image.tmdb.org/t/p/w200${crew.profile_path}`}
                       alt=""
