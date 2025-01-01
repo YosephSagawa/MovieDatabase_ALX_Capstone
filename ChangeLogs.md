@@ -32,3 +32,5 @@
   -Added the trailer section in the movie details page
   -Made the navbar, searchForm, footer and the entire home page responsive
   -Made the categories page responsive
+  -Added rating and duration to the movie details page
+  -Made the movie details page responsive

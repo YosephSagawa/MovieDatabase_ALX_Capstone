@@ -3,9 +3,9 @@ import PopularMovies from "../components/PopularMovies";
 
 //Components
 import MovieSearchForm from "../components/SearchForm";
+import ScrollToTopButton from "../components/ScrollToTop";
 
 //Image
-import HomeBackground from "../assets/HomeBackground.jpg";
 import MovieResults from "../components/MovieResults";
 
 //video
@@ -39,6 +39,9 @@ const Home = () => {
       </div>
       <div className="relative mx-auto z-10">
         <PopularMovies />
+      </div>
+      <div className="relative mx-auto z-20">
+        <ScrollToTopButton />
       </div>
     </div>
   );

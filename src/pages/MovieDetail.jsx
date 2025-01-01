@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import fetchMovieDetails from "../services/MovieDetailService";
 import fetchMovieCast from "../services/MovieCastService";
 import fetchMovieVideos from "../services/MovieVideoService";
+import ScrollToTopButton from "../components/ScrollToTop";
 
 //Icons
 import { FaRegClock } from "react-icons/fa6";
@@ -30,7 +31,6 @@ const MovieDetail = () => {
         setDetails(movieDetails || []);
         setGenres(movieDetails.genres || []);
         setProductionCompanies(movieDetails.production_companies || []);
-        console.log(movieDetails);
       } catch (error) {
         console.error("Failed to fetch movie genres:", error);
       }
@@ -41,7 +41,6 @@ const MovieDetail = () => {
         const movieCast = await fetchMovieCast(id);
         setCast(movieCast.cast || []);
         setCrew(movieCast.crew || []);
-        console.log(movieCast);
       } catch (error) {
         console.error("Failed to fetch movie cast:", error);
       }
@@ -215,6 +214,7 @@ const MovieDetail = () => {
             ))}
         </div>
       </div>
+      <ScrollToTopButton />
     </main>
   );
 };

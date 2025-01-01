@@ -9,7 +9,6 @@ const SearchMovies = async (name) => {
         query: name,
       },
     });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     throw error;

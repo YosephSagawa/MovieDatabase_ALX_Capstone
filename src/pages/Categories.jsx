@@ -3,6 +3,7 @@ import MovieGenreService from "../services/MovieGenreService";
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import Discover from "../services/MovieDiscoverService";
+import ScrollToTopButton from "../components/ScrollToTop";
 
 //Images
 import CategoriesBackground from "../assets/CategoriesBackground.jpg";
@@ -37,7 +38,7 @@ const Categories = () => {
   };
 
   return (
-    <div className="">
+    <div>
       <div
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 60%, rgba(26, 26, 29, 1) 100%), url(${CategoriesBackground})`,
@@ -110,6 +111,7 @@ const Categories = () => {
           </div>
         </div>
       )}
+      <ScrollToTopButton />
     </div>
   );
 };
