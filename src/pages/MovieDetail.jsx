@@ -4,10 +4,12 @@ import fetchMovieDetails from "../services/MovieDetailService";
 import fetchMovieCast from "../services/MovieCastService";
 import fetchMovieVideos from "../services/MovieVideoService";
 import ScrollToTopButton from "../components/ScrollToTop";
+import useFavoritesStore from "../stores/favoritesStore";
 
 //Icons
 import { FaRegClock } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 const MovieDetail = () => {
   const [details, setDetails] = useState([]);
@@ -17,6 +19,9 @@ const MovieDetail = () => {
   const [crew, setCrew] = useState([]);
   const [trailerKey, setTrailerKey] = useState(null);
   const { id } = useParams();
+  const { toggleFavorite, isFavorite } = useFavoritesStore();
+
+  const favStatus = isFavorite(details.id);
 
   const formatRuntime = (runtime) => {
     const hours = Math.floor(runtime / 60);
@@ -94,10 +99,22 @@ const MovieDetail = () => {
               {details.vote_average}
             </p>
           </div>
+          <div className="flex flex-row w-full justify-between items-center">
+            <h1 className="text-5xl font-montserrat font-bold mt-2 mb-2">
+              {details.title}
+            </h1>
+            <button
+              onClick={() => {
+                toggleFavorite(details);
+              }}
+              className={`${
+                favStatus ? "text-red-500" : "text-white"
+              } text-2xl hover:text-button transition-colors duration-300 ease-in-out`}
+            >
+              <FaHeart />
+            </button>
+          </div>
 
-          <h1 className="text-5xl font-montserrat font-bold mt-2 mb-2">
-            {details.title}
-          </h1>
           <p className="text-lg font-nunito font-semibold mb-2">
             {details.tagline}
           </p>

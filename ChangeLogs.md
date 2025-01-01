@@ -34,3 +34,8 @@
   -Made the categories page responsive
   -Added rating and duration to the movie details page
   -Made the movie details page responsive
+  -Added the scroll to top button
+  -Removed console.log statements
+  -Added the favorite store to manage favorties state
+  -Added the favorites page
+  -Added favorite button to movie details
