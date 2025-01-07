@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MovieGenreService from "../services/MovieGenreService";
-import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import Discover from "../services/MovieDiscoverService";
 import ScrollToTopButton from "../components/ScrollToTop";
 
-//Images
+// Images
 import CategoriesBackground from "../assets/CategoriesBackground.jpg";
 import TrySearching from "../assets/TrySearching.svg";
 
@@ -13,6 +12,10 @@ const Categories = () => {
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const fetchGenres = async () => {
       try {
@@ -24,21 +27,37 @@ const Categories = () => {
     };
     fetchGenres();
   }, []);
-  const handleSubmit = async (e) => {
+
+  const fetchMovies = async (genre, pageNumber = 1) => {
+    if (!genre) return;
+
+    try {
+      setLoading(true);
+      const response = await Discover(genre, pageNumber);
+      setMovies(response.results || []);
+      setTotalPages(response.total_pages || 1);
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const fetchMovies = async () => {
-      try {
-        const response = await Discover(selectedGenre, 0, 10);
-        setMovies(response.results);
-      } catch (error) {
-        console.error("Error fetching movies:", error);
-      }
-    };
-    await fetchMovies();
+    setPage(1);
+    fetchMovies(selectedGenre, 1);
+  };
+
+  const handlePageChange = (pageNumber) => {
+    if (pageNumber < 1 || pageNumber > totalPages) return;
+    setPage(pageNumber);
+    fetchMovies(selectedGenre, pageNumber);
   };
 
   return (
     <div>
+      {/* Header */}
       <div
         style={{
           backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 60%, rgba(26, 26, 29, 1) 100%), url(${CategoriesBackground})`,
@@ -51,6 +70,7 @@ const Categories = () => {
         </h1>
       </div>
 
+      {/* Genre Selection Form */}
       <form onSubmit={handleSubmit} className="flex justify-center py-6">
         <div className="bg-searchbg/25 rounded-full w-fit py-3 px-2">
           <select
@@ -79,6 +99,7 @@ const Categories = () => {
         </div>
       </form>
 
+      {/* Movies Section */}
       {!movies || movies.length === 0 ? (
         <div className="px-8 pb-8">
           <img
@@ -93,7 +114,7 @@ const Categories = () => {
       ) : (
         <div className="px-8">
           <h1 className="text-xl text-gray-300 border-b font-montserrat font-medium mb-12">
-            {selectedGenre && (movies || movies.length !== 0)
+            {selectedGenre && movies.length !== 0
               ? `Movies in ${
                   genres.find((g) => g.id === Number(selectedGenre))?.name || ""
                 }`
@@ -102,12 +123,76 @@ const Categories = () => {
           <div className="flex flex-wrap gap-x-20 gap-y-4 lg:gap-4 justify-center mb-6">
             {movies.map((movie) => (
               <MovieCard
+                key={movie.id}
                 id={movie.id}
                 title={movie.title}
                 poster_path={movie.poster_path}
                 vote_average={movie.vote_average}
               />
             ))}
+          </div>
+
+          {/* Pagination */}
+          <div className="flex justify-center items-center gap-2 mt-4 flex-wrap pb-6">
+            {/* Button to go 10 pages back */}
+            {page > 10 && (
+              <button
+                onClick={() => handlePageChange(Math.max(page - 10, 1))}
+                className="px-4 py-2 bg-secondary text-white rounded"
+              >
+                &laquo; Prev 10
+              </button>
+            )}
+
+            {/* Button to go to the previous page */}
+            {page > 1 && (
+              <button
+                onClick={() => handlePageChange(page - 1)}
+                className="px-4 py-2 bg-secondary text-white rounded"
+              >
+                Prev
+              </button>
+            )}
+
+            {/* Show only 2 page numbers: current page and next page */}
+            {Array.from(
+              { length: Math.min(2, totalPages - page + 1) },
+              (_, index) => (
+                <button
+                  key={index}
+                  onClick={() => handlePageChange(page + index)}
+                  className={`px-4 py-2 rounded ${
+                    page === page + index
+                      ? "bg-button text-white"
+                      : "bg-secondary text-white"
+                  }`}
+                >
+                  {page + index}
+                </button>
+              )
+            )}
+
+            {/* Button to go to the next page */}
+            {page < totalPages && (
+              <button
+                onClick={() => handlePageChange(page + 1)}
+                className="px-4 py-2 bg-secondary text-white rounded"
+              >
+                Next
+              </button>
+            )}
+
+            {/* Button to go 10 pages forward */}
+            {page <= totalPages - 10 && (
+              <button
+                onClick={() =>
+                  handlePageChange(Math.min(page + 10, totalPages))
+                }
+                className="px-4 py-2 bg-secondary text-white rounded"
+              >
+                Next 10 &raquo;
+              </button>
+            )}
           </div>
         </div>
       )}

@@ -104,12 +104,15 @@ const MovieDetail = () => {
               {details.title}
             </h1>
             <button
+              onTouchStart={() => toggleFavorite(details)}
               onClick={() => {
+                console.log("Toggling favorite for:", details.id);
+                console.log("Current favorite status:", favStatus);
                 toggleFavorite(details);
               }}
               className={`${
                 favStatus ? "text-red-500" : "text-white"
-              } text-2xl hover:text-button transition-colors duration-300 ease-in-out`}
+              } text-2xl hover:text-button z-10`}
             >
               <FaHeart />
             </button>

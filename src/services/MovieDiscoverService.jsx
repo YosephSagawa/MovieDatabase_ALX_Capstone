@@ -1,5 +1,5 @@
 import axios from "axios";
-const Discover = async (genre, minRating, maxRating) => {
+const Discover = async (genre, page = 1, minRating = 0, maxRating = 10) => {
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const URL = "https://api.themoviedb.org/3/discover/movie";
   try {
@@ -11,8 +11,10 @@ const Discover = async (genre, minRating, maxRating) => {
         "vote_average.lte": maxRating,
         language: "en-US",
         sort_by: "popularity.desc",
+        page,
       },
     });
+    console.log(response.data);
     return response.data;
   } catch (error) {
     throw error;
