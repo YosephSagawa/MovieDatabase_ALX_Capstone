@@ -128,7 +128,7 @@ const MovieDetail = () => {
               }}
               className={`${
                 favStatus ? "text-red-500" : "text-white"
-              } text-2xl hover:text-button z-10`}
+              } text-2xl hover:bg-secondary p-3 rounded-full z-10`}
             >
               <FaHeart />
             </button>
