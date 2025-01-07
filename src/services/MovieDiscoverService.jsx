@@ -14,7 +14,6 @@ const Discover = async (genre, page = 1, minRating = 0, maxRating = 10) => {
         page,
       },
     });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     throw error;
