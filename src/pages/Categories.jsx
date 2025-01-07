@@ -55,7 +55,7 @@ const Categories = () => {
 
     try {
       setLoading(true);
-      const response = await Discover(genre, pageNumber);
+      const response = await Discover(genre, pageNumber, 0, 10);
       setMovies(response.results || []);
       setTotalPages(response.total_pages || 1);
     } catch (error) {

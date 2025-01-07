@@ -75,7 +75,12 @@ const Footer = () => {
             >
               Get In Touch
             </a>
-            <a href="" className="hover:underline">
+            <a
+              href="https://developer.themoviedb.org/reference/intro/getting-started"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
               API
             </a>
           </div>

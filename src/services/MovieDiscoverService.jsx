@@ -1,5 +1,5 @@
 import axios from "axios";
-const Discover = async (genre, page = 1, minRating = 0, maxRating = 10) => {
+const Discover = async (genre, page = 1, minRating, maxRating) => {
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const URL = "https://api.themoviedb.org/3/discover/movie";
   try {

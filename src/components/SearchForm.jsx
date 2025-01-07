@@ -72,6 +72,7 @@ const MovieSearchForm = () => {
         } else {
           const response = await Discover(
             formData.genre,
+            1,
             formData.minRating,
             formData.maxRating
           );
