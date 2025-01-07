@@ -39,3 +39,6 @@
   -Added the favorite store to manage favorties state
   -Added the favorites page
   -Added favorite button to movie details
+  -Added pagination to the categories page
+  -Added the get in touch email
+  -Added the loading state on the home page for the searching functionality

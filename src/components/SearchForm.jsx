@@ -8,6 +8,7 @@ import useMoviesStore from "../stores/moviesStore";
 
 const MovieSearchForm = () => {
   const setMovies = useMoviesStore((state) => state.setMovies);
+  const setLoading = useMoviesStore((state) => state.setLoading);
   const [genres, setGenres] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
@@ -35,6 +36,7 @@ const MovieSearchForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const fetchMovies = async () => {
       try {
         if (formData.name) {
@@ -50,6 +52,8 @@ const MovieSearchForm = () => {
         }
       } catch (error) {
         console.error("Error fetching movies:", error);
+      } finally {
+        setLoading(false);
       }
     };
     await fetchMovies();

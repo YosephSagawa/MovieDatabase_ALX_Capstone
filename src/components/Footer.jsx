@@ -59,7 +59,10 @@ const Footer = () => {
           </div>
 
           <div className="flex font-nunito justify-center gap-3">
-            <a href="" className="hover:underline">
+            <a
+              href="mailto:yosephsagawa0@gmail.com?subject=Get%20In%20Touch&body=Hello,%20I%20would%20like%20to%20get%20in%20touch!"
+              className="hover:underline"
+            >
               Get In Touch
             </a>
             <a href="" className="hover:underline">

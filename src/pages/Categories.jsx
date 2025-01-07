@@ -138,7 +138,7 @@ const Categories = () => {
             {page > 10 && (
               <button
                 onClick={() => handlePageChange(Math.max(page - 10, 1))}
-                className="px-4 py-2 bg-secondary text-white rounded"
+                className="px-3 py-1 sm:px-4 sm:py-2 bg-secondary text-white rounded"
               >
                 &laquo; Prev 10
               </button>
@@ -148,7 +148,7 @@ const Categories = () => {
             {page > 1 && (
               <button
                 onClick={() => handlePageChange(page - 1)}
-                className="px-4 py-2 bg-secondary text-white rounded"
+                className="px-3 py-1 sm:px-4 sm:py-2 bg-secondary text-white rounded"
               >
                 Prev
               </button>
@@ -161,7 +161,7 @@ const Categories = () => {
                 <button
                   key={index}
                   onClick={() => handlePageChange(page + index)}
-                  className={`px-4 py-2 rounded ${
+                  className={`px-3 py-1 sm:px-4 sm:py-2 rounded ${
                     page === page + index
                       ? "bg-button text-white"
                       : "bg-secondary text-white"
@@ -176,7 +176,7 @@ const Categories = () => {
             {page < totalPages && (
               <button
                 onClick={() => handlePageChange(page + 1)}
-                className="px-4 py-2 bg-secondary text-white rounded"
+                className="px-3 py-1 sm:px-4 sm:py-2 bg-secondary text-white rounded"
               >
                 Next
               </button>
@@ -188,7 +188,7 @@ const Categories = () => {
                 onClick={() =>
                   handlePageChange(Math.min(page + 10, totalPages))
                 }
-                className="px-4 py-2 bg-secondary text-white rounded"
+                className="px-3 py-1 sm:px-4 sm:py-2 bg-secondary text-white rounded"
               >
                 Next 10 &raquo;
               </button>
