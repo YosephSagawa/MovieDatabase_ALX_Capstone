@@ -3,10 +3,20 @@ import { FaStar } from "react-icons/fa";
 import fetchMovieDetails from "../services/MovieDetailService";
 import { NavLink } from "react-router-dom";
 
+/**
+ * A reusable React component to display a movie card.
+ * @param {string} id The ID of the movie.
+ * @param {string} title The title of the movie.
+ * @param {string} poster_path The path to the movie poster.
+ * @param {number} vote_average The average rating of the movie.
+ */
 const MovieCard = ({ id, title, poster_path, vote_average }) => {
   const [genres, setGenres] = useState([]);
 
   useEffect(() => {
+    /**
+     * Fetch the movie details and set the genres state.
+     */
     const fetchGenres = async () => {
       try {
         const movieDetails = await fetchMovieDetails(id);
@@ -17,6 +27,7 @@ const MovieCard = ({ id, title, poster_path, vote_average }) => {
     };
     fetchGenres();
   }, [id]);
+
   return (
     <NavLink to={`/movies/${id}`}>
       <div

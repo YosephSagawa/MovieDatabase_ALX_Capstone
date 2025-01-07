@@ -8,6 +8,19 @@ import ScrollToTopButton from "../components/ScrollToTop";
 import CategoriesBackground from "../assets/CategoriesBackground.jpg";
 import TrySearching from "../assets/TrySearching.svg";
 
+/**
+ * Categories page component
+ *
+ * This component renders a page with a list of movies belonging to a specific
+ * genre. The user can select a genre from the dropdown menu and the page will
+ * render the movies in that genre.
+ *
+ * The component uses the MovieGenreService to fetch the list of genres and the
+ * Discover service to fetch the movies belonging to the selected genre.
+ *
+ * The component also uses the ScrollToTopButton component to add a "Back to top"
+ * button to the page.
+ */
 const Categories = () => {
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(null);
@@ -16,6 +29,9 @@ const Categories = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
 
+  /**
+   * Fetch the list of genres from the API
+   */
   useEffect(() => {
     const fetchGenres = async () => {
       try {
@@ -28,6 +44,12 @@ const Categories = () => {
     fetchGenres();
   }, []);
 
+  /**
+   * Fetch the movies belonging to the selected genre from the API
+   *
+   * @param {number} genre The ID of the genre to fetch movies for
+   * @param {number} pageNumber The page number to fetch movies for
+   */
   const fetchMovies = async (genre, pageNumber = 1) => {
     if (!genre) return;
 
@@ -43,12 +65,22 @@ const Categories = () => {
     }
   };
 
+  /**
+   * Handle the form submission to fetch movies for the selected genre
+   *
+   * @param {Event} e The form submission event
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     setPage(1);
     fetchMovies(selectedGenre, 1);
   };
 
+  /**
+   * Handle the page change event to fetch movies for the next page
+   *
+   * @param {number} pageNumber The page number to fetch movies for
+   */
   const handlePageChange = (pageNumber) => {
     if (pageNumber < 1 || pageNumber > totalPages) return;
     setPage(pageNumber);

@@ -4,9 +4,22 @@ import fetchPopularMovies from "../services/TmdbService";
 //Components
 import MovieCard from "./MovieCard";
 
+/**
+ * PopularMovies component
+ *
+ * Fetches the list of popular movies from the TMDB API and
+ * renders a list of MovieCards with the movie's title, poster,
+ * and vote average.
+ *
+ * @returns {JSX.Element} The PopularMovies component
+ */
 const PopularMovies = () => {
   const [movies, setMovies] = useState([]);
 
+  /**
+   * Fetches the list of popular movies from the TMDB API
+   * and sets the movies state with the response.
+   */
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -19,6 +32,7 @@ const PopularMovies = () => {
 
     fetchMovies();
   }, []);
+
   return (
     <div className="px-8">
       <h1 className="text-xl text-gray-300 border-b font-montserrat font-medium mb-12">

@@ -6,9 +6,22 @@ import MovieCard from "../components/MovieCard";
 import FavoritesBackground from "../assets/FavoritesBackground.jpg";
 import Popcorn from "../assets/Popcorn.png";
 
+/**
+ * Favorites Component
+ *
+ * This component displays the user's favorite movies.
+ *
+ * @returns {JSX.Element} The Favorites component
+ */
 const Favorites = () => {
+  /**
+   * Get the user's favorite movies from the store
+   */
   const { favorites } = useFavoritesStore();
 
+  /**
+   * Log the favorite movies when the component mounts
+   */
   useEffect(() => {
     console.log("Favorites Array:", favorites);
   }, [favorites]);
@@ -17,6 +30,11 @@ const Favorites = () => {
     <div>
       <div
         style={{
+          /**
+           * Set the background image and gradient
+           * to create a darkened image with a colored
+           * gradient at the bottom
+           */
           backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 60%, rgba(26, 26, 29, 1) 100%), url(${FavoritesBackground})`,
           height: "300px",
           width: "100%",

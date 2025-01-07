@@ -6,6 +6,22 @@ import MovieResults from "./MovieResults";
 import { IoIosSearch } from "react-icons/io";
 import useMoviesStore from "../stores/moviesStore";
 
+/**
+ * MovieSearchForm component
+ *
+ * This component renders a search form for movies.
+ * The form has a text input for searching by name, a select input for searching by genre, and two number inputs for searching by rating.
+ * The component also renders a button to submit the form.
+ * The component uses the MovieSearchService to fetch the movies based on the search criteria.
+ * The component uses the useMoviesStore hook to set the movies state in the store.
+ * The component uses the useState hook to keep track of the search criteria.
+ * The component uses the useEffect hook to fetch the genres from the API and set the genres state.
+ * The component uses the handleChange function to update the search criteria state on change.
+ * The component uses the handleSubmit function to fetch the movies based on the search criteria on submit.
+ * The component renders a MovieResults component to display the search results.
+ *
+ * @returns {JSX.Element} The MovieSearchForm component
+ */
 const MovieSearchForm = () => {
   const setMovies = useMoviesStore((state) => state.setMovies);
   const setLoading = useMoviesStore((state) => state.setLoading);
@@ -17,6 +33,9 @@ const MovieSearchForm = () => {
     maxRating: 10,
   });
 
+  /**
+   * Fetch the genres from the API and set the genres state.
+   */
   useEffect(() => {
     const fetchGenres = async () => {
       try {
@@ -29,11 +48,19 @@ const MovieSearchForm = () => {
     fetchGenres();
   }, []);
 
+  /**
+   * Update the search criteria state on change.
+   * @param {React.ChangeEvent<HTMLInputElement>} e The change event
+   */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  /**
+   * Fetch the movies based on the search criteria on submit.
+   * @param {React.FormEvent<HTMLFormElement>} e The form event
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -58,6 +85,7 @@ const MovieSearchForm = () => {
     };
     await fetchMovies();
   };
+
   return (
     <div className="flex flex-col items-center justify-center">
       <form

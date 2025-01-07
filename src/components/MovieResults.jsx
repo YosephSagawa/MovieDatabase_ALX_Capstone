@@ -7,10 +7,22 @@ import MovieCard from "./MovieCard";
 //Images
 import TrySearching from "../assets/TrySearching.svg";
 
+/**
+ * MovieResults Component
+ *
+ * This component renders the search results for movies.
+ * If the movies store is loading, it renders a loading animation.
+ * If the movies store is empty, it renders a message to try searching for a movie.
+ * If the movies store is not empty, it renders a list of movies with their poster,
+ * title, and vote average.
+ *
+ * @returns {JSX.Element} The MovieResults component
+ */
 const MovieResults = () => {
   const movies = useMoviesStore((state) => state.movies);
   const loading = useMoviesStore((state) => state.loading);
 
+  // If the movies store is loading, render a loading animation
   if (loading) {
     return (
       <div className="px-8 mx-auto">
@@ -26,6 +38,7 @@ const MovieResults = () => {
     );
   }
 
+  // If the movies store is empty, render a message to try searching for a movie
   if (movies.length === 0) {
     return (
       <div className="px-8">
@@ -36,6 +49,8 @@ const MovieResults = () => {
       </div>
     );
   }
+
+  // If the movies store is not empty, render a list of movies
   return (
     <div className="px-8">
       <div className="flex flex-wrap gap-x-20 gap-y-4 lg:gap-4 justify-center mb-6">

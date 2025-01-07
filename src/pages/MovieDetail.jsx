@@ -11,6 +11,18 @@ import { FaRegClock } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 
+/**
+ * Movie detail page
+ * @param {Object} details - Movie details data
+ * @param {Object} genres - Movie genres data
+ * @param {Object} productionCompanies - Movie production companies data
+ * @param {Object} cast - Movie cast data
+ * @param {Object} crew - Movie crew data
+ * @param {String} trailerKey - Movie trailer key
+ * @param {boolean} isFavorite - Is the movie a favorite
+ * @param {Function} toggleFavorite - Toggle favorite function
+ * @returns {JSX.Element} The movie detail page
+ */
 const MovieDetail = () => {
   const [details, setDetails] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -23,6 +35,11 @@ const MovieDetail = () => {
 
   const favStatus = isFavorite(details.id);
 
+  /**
+   * Format the movie runtime in hours and minutes
+   * @param {Number} runtime - Movie runtime in minutes
+   * @returns {String} Formatted runtime
+   */
   const formatRuntime = (runtime) => {
     const hours = Math.floor(runtime / 60);
     const minutes = runtime % 60;

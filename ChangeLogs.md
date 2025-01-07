@@ -42,3 +42,4 @@
   -Added pagination to the categories page
   -Added the get in touch email
   -Added the loading state on the home page for the searching functionality
+  -Added comments to the code
