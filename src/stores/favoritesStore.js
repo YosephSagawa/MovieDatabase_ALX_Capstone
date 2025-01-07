@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 const useFavoritesStore = create((set, get) => ({
   favorites: JSON.parse(localStorage.getItem("favorites")) || [],
+
   addFavorite: (movie) => {
     set((state) => {
       const updatedFavorites = [...state.favorites, movie];

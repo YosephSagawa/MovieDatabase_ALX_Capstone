@@ -33,7 +33,7 @@ const MovieDetail = () => {
   const { id } = useParams();
   const { toggleFavorite, isFavorite } = useFavoritesStore();
 
-  const favStatus = isFavorite(details.id);
+  const favStatus = details?.id ? isFavorite(details.id) : false;
 
   /**
    * Format the movie runtime in hours and minutes
@@ -121,7 +121,6 @@ const MovieDetail = () => {
               {details.title}
             </h1>
             <button
-              onTouchStart={() => toggleFavorite(details)}
               onClick={() => {
                 console.log("Toggling favorite for:", details.id);
                 console.log("Current favorite status:", favStatus);
